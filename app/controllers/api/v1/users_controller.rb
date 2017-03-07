@@ -1,14 +1,19 @@
 class Api::V1::UsersController < ApiController
 
   def index
-    @users = User.all.pluck(:username).sort
-    user_hash = {}
-    @users.each do |user|
-      user_hash["#{user}"] = nil
-    end
+    @users = User.all
 
-    render json: {
-      users: user_hash
-    }, status: :ok
+    render json: { users: @users}, s tatus: :ok
   end
+
+  def create
+    @user = User.create(user_params)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
+
 end
