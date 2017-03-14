@@ -6,16 +6,23 @@ class Api::V1::UsersController < ApiController
     render json: { users: @users }, status: :ok
   end
 
-  def create
-    @user = User.create(user_params)
+  def show
+    @user = User.find(params[:id])
+  end
 
-    render json: { user: @user }, status: :ok
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      log_in @user
+      render json: { user_id: @user.id }, status: :ok
+    else
+      render json: { error: @user.errors.full_messages.join(', ') }
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
-
 end
