@@ -49,7 +49,11 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :bucket => 'S3_BUCKET_NAME'
+    :s3_credentials => {
+      :bucket => 'photo-friend-app-dev',
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
-  
+
 end
