@@ -97,3 +97,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+config.after(:suite) do
+  FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+end
