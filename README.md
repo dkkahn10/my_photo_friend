@@ -1,26 +1,36 @@
-# README
+# My Photo Friend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A photo storage and editing application based on the following frameworks and technologies:
+- Rails API backend
+- Postgres database
+- Hosted on AWS
+- S3 used for photo storage
+- React-based single-page application
 
-Things you may want to cover:
+To install, first clone the repo and then run:
+```
+bundle install
+```
 
-* Ruby version
+Start the server:
+```
+rails s
+```
 
-* System dependencies
+In another terminal window, run NPM:
+```
+npm start
+```
 
-* Configuration
+Navigate your browser to `localhost:3000`.
 
-* Database creation
+# Test suite
+Run the test suite for the Rails backend:
+```
+rspec
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Name
-Your app description, here.
+Run the test suite for the React frontend:
+```
+npm test
+```
